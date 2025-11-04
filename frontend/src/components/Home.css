@@ -1,0 +1,45 @@
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+  padding: 80px;
+  background: linear-gradient(to bottom right, #f3fff5, #e6f6eb);
+  color: #111;
+  overflow: hidden;
+}
+
+.intro {
+  max-width: 600px;
+}
+
+.intro h3 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.intro .role {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.intro h1 {
+  font-size: 56px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.profile-pic img {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.profile-pic img:hover {
+  transform: scale(1.05);
+}
