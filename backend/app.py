@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, send_file, abort, send_from_directory
+from flask_cors import CORS
 import os
 
 # Serve the static files from the React build directory
-app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
+app = Flask(__name__)
+CORS(app)
 
 CERT_PATH = os.path.join(os.path.dirname(__file__), 'certificates')
 
@@ -41,14 +43,6 @@ def view_certificate(cert_id):
     if os.path.exists(file_path):
         return send_file(file_path, as_attachment=False)
     abort(404, description="File not found")
-
-@app.route('/')
-def serve_index():
-    return send_from_directory(app.static_folder, 'index.html')
-
-@app.errorhandler(404)
-def not_found(e):
-    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run(debug=True,port=5000)        
