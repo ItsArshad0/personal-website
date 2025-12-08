@@ -6,6 +6,10 @@ import os
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def health_check():
+    return "OK"
+
 CERT_PATH = os.path.join(os.path.dirname(__file__), 'certificates')
 
 def get_certificates():
