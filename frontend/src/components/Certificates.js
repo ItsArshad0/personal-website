@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 export default function Certificates({ limit }) {
   const [certs, setCerts] = useState([]);
-  const backend = "http://localhost:5000"; // Flask server
+  const backend = process.env.NODE_ENV === 'production'
+    ? process.env.REACT_APP_API_URL
+    : "http://localhost:5000"; // Flask server
 
   useEffect(() => {
     fetch(`${backend}/certificates`)
