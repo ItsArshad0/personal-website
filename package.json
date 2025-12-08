@@ -1,4 +1,14 @@
 {
+  "name": "portfolio-runner",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "npm install --prefix frontend && pip install -r backend/requirements.txt",
+    "dev": "concurrently \"python backend/app.py\" \"npm start --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
   "dependencies": {
     "framer-motion": "^12.23.24"
   }
