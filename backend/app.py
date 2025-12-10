@@ -1,16 +1,14 @@
 from flask import Flask, jsonify, send_file, abort, request
-from flask_cors import CORS
 import os, logging, traceback
 
 app = Flask(__name__)
 
-# Use a restrictive origin in production (e.g. ["https://your-frontend.com"])
-CORS(app,
-     resources={r"/*": {"origins": "*"}},
-     methods=["GET", "POST", "HEAD"],
-     allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
-     expose_headers=["Content-Disposition"],
-     max_age=3600)
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 logging.basicConfig(level=logging.INFO)
 
