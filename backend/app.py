@@ -4,7 +4,7 @@ import os
 
 # Serve the static files from the React build directory
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://website-host-temp.s3-website.ap-south-1.amazonaws.com"}})
+CORS(app, resources={r"/*": {"origins": "*"}} )
 
 @app.route('/')
 def health_check():
