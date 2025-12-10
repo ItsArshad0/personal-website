@@ -8,7 +8,7 @@ CORS(app, resources={r"/*": {"origins": "*"}} )
 
 @app.route('/')
 def health_check():
-    return "OK"
+    return "Health check v2 OK"
 
 CERT_PATH = os.path.join(os.path.dirname(__file__), 'certificates')
 
