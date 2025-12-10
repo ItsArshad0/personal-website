@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app,
      resources={r"/*": {"origins": "*"}},
      supports_credentials=True,
-     methods=["GET", "POST", "OPTIONS", "HEAD"],
+     methods=["GET", "POST", "HEAD"],
      allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
      expose_headers=["Content-Disposition"],
      max_age=3600)
@@ -40,18 +40,13 @@ def get_certificates():
         })
     return certs
 
-@app.route('/certificates', methods=['GET', 'OPTIONS'])
+@app.route('/certificates', methods=['GET'])
 def list_certficates():
-    # Flask-CORS will add proper headers; we also accept OPTIONS here to be explicit
-    if request.method == 'OPTIONS':
-        return ('', 204)
+    # Flask-CORS will add proper headers;
     return jsonify(get_certificates())
 
-@app.route("/view/<int:cert_id>", methods=['GET', 'OPTIONS'])
+@app.route("/view/<int:cert_id>", methods=['GET'])
 def view_certificate(cert_id):
-    if request.method == 'OPTIONS':
-        return ('', 204)
-
     cert = next((c for c in get_certificates() if c['id'] == cert_id), None)
     if not cert:
         abort(404, description="Certificate not found")
