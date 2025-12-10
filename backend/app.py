@@ -7,7 +7,6 @@ app = Flask(__name__)
 # Use a restrictive origin in production (e.g. ["https://your-frontend.com"])
 CORS(app,
      resources={r"/*": {"origins": "*"}},
-     supports_credentials=True,
      methods=["GET", "POST", "HEAD"],
      allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
      expose_headers=["Content-Disposition"],
