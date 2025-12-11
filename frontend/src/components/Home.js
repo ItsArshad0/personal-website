@@ -45,8 +45,9 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          This is a test to confirm deployment. <br />
-          If you see this, the deployment is working.
+          Hey there! I’m a creative <br />
+          full-stack and AI developer <br />
+          crafting intelligent web products.
         </motion.h1>
 
         {/* Achievement Section */}
